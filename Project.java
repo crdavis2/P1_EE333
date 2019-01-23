@@ -12,6 +12,9 @@
 public class Project {
     
     // instance variables
+    public static final int MAX_RISKS = 10;
+    public static final int MAX_GOALS = 10;
+    public static final int MAX_CONSTRAINTS = 10;
     public String name;    
     
     /**

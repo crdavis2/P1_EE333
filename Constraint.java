@@ -12,7 +12,10 @@
 public class Constraint {
     
     // Instance Variables
-    public String title;
+    public String     title;
+    public String     UID;
+    public static int constraintCount = 0;
+   
     
     /**
     * Create a constraint with a UID and a name. If name is null,
@@ -21,7 +24,16 @@ public class Constraint {
     * @param title text for title.
     */
     public Constraint(String title) {
-        this.title = title;
+        if (title == null) {
+            this.title = "Unnamed cosntraint";
+            UID = "CO-" + constraintCount;
+            constraintCount++;
+        } else {
+            this.title = title;
+            UID = "CO-" + constraintCount;
+            constraintCount++;
+        }
+        
     }
     
     /**
@@ -30,7 +42,7 @@ public class Constraint {
      * @return constraint UID
      */
     public String getUID() {
-        // add functionality
+        return UID;
     }
     
     /**
@@ -48,8 +60,9 @@ public class Constraint {
      * 
      * @return formatted string
      */
+    @Override
     public String toString() {
-        // add functionality
+        return UID + ": " + title;
     }
     
     /**

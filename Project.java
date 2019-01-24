@@ -67,7 +67,8 @@ public class Project {
      */
     @Override
     public String toString() {
-        return title + " " + numConstraints + " " + numGoals +  " " + numRisks;
+        return title + " " + numConstraints + " Constraints " + numGoals +
+                " Goals " + numRisks + " Risks";
     }
     
     /**

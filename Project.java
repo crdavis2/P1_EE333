@@ -11,30 +11,31 @@ import java.util.Collections;
 
 /**
  * Generic Project
+ *
  * @author Collin Davis crdavis2@uab.edu
  */
 public class Project {
-    
+
     // Instance Variables
-    public static final int MAX_CONSTRAINTS       = 10;
-    public static final int MAX_GOALS             = 10;
-    public static final int MAX_RISKS             = 10;
-    public String           title;
-    public Constraint[]     constraints;
-    public Goal[]           goals;
-    public Risk[]           risks;
-    public int              ConstraintCounter     =  0;
-    public int              GoalCounter           =  0;
-    public int              RiskCounter           =  0;
-    public int              numGoals              =  0;
-    public int              numConstraints        =  0;
-    public int              numRisks              =  0;
-    
+    public static final int MAX_CONSTRAINTS = 10;
+    public static final int MAX_GOALS = 10;
+    public static final int MAX_RISKS = 10;
+    public String title;
+    public Constraint[] constraints;
+    public Goal[] goals;
+    public Risk[] risks;
+    public int ConstraintCounter = 0;
+    public int GoalCounter = 0;
+    public int RiskCounter = 0;
+    public int numGoals = 0;
+    public int numConstraints = 0;
+    public int numRisks = 0;
+
     /**
      * Constructor for objects of class Project with title
-    
+     *
      * @param title text for title. If null, the project title will
-     *      be set to "Unnamed project"
+     *              be set to "Unnamed project"
      */
     public Project(String title) {
         if (title == null) {
@@ -48,35 +49,37 @@ public class Project {
             goals = new Goal[MAX_GOALS];
             risks = new Risk[MAX_RISKS];
         }
-        
+
     }
-    
+
     /**
      * Get the title of the project
-     * 
+     *
      * @return the text of the project title
      */
     public String getTitle() {
         return title;
     }
-    
+
     /**
      * Represent a text description of the project like {title} with {#constraints}
-     *  constraints, {#goals}, and {#risks} risks.
+     * constraints, {#goals}, and {#risks} risks.
+     *
      * @return string as described
      */
     @Override
     public String toString() {
-        return title + " " + numConstraints + " " + numGoals +  " " + numRisks;
+        return title + " " + numConstraints + " " + numGoals + " " + numRisks;
     }
-    
+
     /**
      * Get the next goal if it exists. The first time called, it will return the
      * first goal. The method <code>reset()</code> will reset the object such that
      * it will return the first goal on the next invocation of
      * <code>getNextGoal()</code> after the <code>reset()</code>.
-     *
+     * <p>
      * The order of the goals will be the ordered they were added to the object.
+     *
      * @return goal object if one exists or null otherwise
      */
     public Goal getNextGoal() {
@@ -87,14 +90,15 @@ public class Project {
             return null;
         }
     }
-    
+
     /**
-    * Get the next constraint if it exists. The first time called, it will return
-    * the first constraint. The method <code>reset()</code> will reset the object
-    * such that it will return the first constraint on the next invocation of
-    * <code>getNextConstraint()</code> after the <code>reset()</code>.
-    * @return constraint object if one exists or null otherwise
-    */
+     * Get the next constraint if it exists. The first time called, it will return
+     * the first constraint. The method <code>reset()</code> will reset the object
+     * such that it will return the first constraint on the next invocation of
+     * <code>getNextConstraint()</code> after the <code>reset()</code>.
+     *
+     * @return constraint object if one exists or null otherwise
+     */
     public Constraint getNextConstraint() {
         if (ConstraintCounter < MAX_CONSTRAINTS) {
             ConstraintCounter++;
@@ -103,26 +107,30 @@ public class Project {
             return null;
         }
     }
-    
+
     /**
      * Get the next risk if it exists in priority order. The first time called, it
      * will return the highest priority risk. The method <code>reset()</code> will
      * reset the object such that it will return the first risk on the next
      * invocation of <code>getNextRisk()</code> after the <code>reset()</code>.
+     *
      * @return risk object if one exists or null otherwise
      */
     public Risk getNextRisk() {
-        if (RiskCounter < MAX_RISKS) {
+        if (RiskCounter == 0) {
+            sort(risks, 0, numRisks - 1);
+        }
+        if (RiskCounter <= MAX_RISKS) {
             RiskCounter++;
-            return risks[RiskCounter];
+            return risks[RiskCounter - 1];
         } else {
             return null;
         }
     }
-    
+
     /**
      * Add constraint to the project
-     * 
+     *
      * @param constraint the constraint to add to the project
      */
     public void addConstraint(Constraint constraint) {
@@ -133,10 +141,10 @@ public class Project {
             // some error handling goes here
         }
     }
-    
+
     /**
      * Add goal to the project
-     * 
+     *
      * @param goal the goal to add to the project
      */
     public void addGoal(Goal goal) {
@@ -147,10 +155,10 @@ public class Project {
             // some error handling goes here
         }
     }
-    
+
     /**
      * Add risk to the project
-     * 
+     *
      * @param risk the risk to add to the project
      */
     public void addRisk(Risk risk) {
@@ -161,15 +169,64 @@ public class Project {
             // some error handling goes here
         }
     }
-    
+
     /**
      * Reset the getNextGoal, getNextConstraint, getNextRisk behaviors to start
-     *      again at the "first" item to allow sequencing through the list again
+     * again at the "first" item to allow sequencing through the list again
      */
     public void reset() {
-        GoalCounter       = 0;
-        RiskCounter       = 0;
+        GoalCounter = 0;
+        RiskCounter = 0;
         ConstraintCounter = 0;
     }
-    
+
+    void merge(Risk[] arr, int l, int m, int r) {
+        int n1 = m - l + 1;
+        int n2 = r - m;
+        Risk[] L = new Risk[n1];
+        Risk[] R = new Risk[n2];
+
+        for (int i = 0; i < n1; ++i) {
+            L[i] = arr[l + i];
+        }
+
+        for (int j = 0; j < n2; ++j)
+            R[j] = arr[m + 1 + j];
+        int i = 0, j = 0;
+
+        int k = l;
+        while (i < n1 && j < n2) {
+            if (L[i].priority() > R[j].priority()) {
+                arr[k] = L[i];
+                i++;
+            } else {
+                arr[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+
+        while (i < n1) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+
+        while (j < n2) {
+            arr[k] = R[j];
+            j++;
+            k++;
+        }
+    }
+
+    void sort(Risk[] arr, int l, int r) {
+        if (l < r) {
+            int m = (l + r) / 2;
+
+            sort(arr, l, m);
+            sort(arr, m + 1, r);
+
+            merge(arr, l, m, r);
+        }
+    }
 }

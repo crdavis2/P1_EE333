@@ -1,3 +1,7 @@
+
+import java.util.Arrays;
+import java.util.Collections;
+
 /*
  * File: Project.java
  * Author: Collin Davis crdavis2@uab.edu
@@ -15,7 +19,7 @@ public class Project {
     public static final int MAX_CONSTRAINTS       = 10;
     public static final int MAX_GOALS             = 10;
     public static final int MAX_RISKS             = 10;
-    public String           name;
+    public String           title;
     public Constraint[]     constraints;
     public Goal[]           goals;
     public Risk[]           risks;
@@ -27,19 +31,19 @@ public class Project {
     public int              numRisks              =  0;
     
     /**
-     * Constructor for objects of class Project with name
+     * Constructor for objects of class Project with title
     
-     * @param name text for title. If null, the project title will
+     * @param title text for title. If null, the project title will
      *      be set to "Unnamed project"
      */
-    public Project(String name) {
-        if (name == null) {
-            this.name = "Unnamed project";
+    public Project(String title) {
+        if (title == null) {
+            this.title = "Unnamed project";
             constraints = new Constraint[MAX_CONSTRAINTS];
             goals = new Goal[MAX_GOALS];
             risks = new Risk[MAX_RISKS];
         } else {
-            this.name = name;
+            this.title = title;
             constraints = new Constraint[MAX_CONSTRAINTS];
             goals = new Goal[MAX_GOALS];
             risks = new Risk[MAX_RISKS];
@@ -48,12 +52,22 @@ public class Project {
     }
     
     /**
-     * Get the name of the project
+     * Get the title of the project
      * 
-     * @return the text of the project name
+     * @return the text of the project title
      */
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
+    }
+    
+    /**
+     * Represent a text description of the project like {title} with {#constraints}
+     *  constraints, {#goals}, and {#risks} risks.
+     * @return string as described
+     */
+    @Override
+    public String toString() {
+        return title + " " + numConstraints + " " + numGoals +  " " + numRisks;
     }
     
     /**

@@ -11,14 +11,33 @@
  */
 public class Risk {
     
+    // Instance Variables
+    public String     title;
+    public String     UID;
+    public String     mitigation;
+    public static int riskCount = 0;
+    public int        impact;
+    public int        likelihood;
+    public int        priority;
+    
+    
     /**
     * Create a risk with a UID and a title. If title is null, then "Unnamed 
     *   risk" shall be used for the title of the risk. The other properties are   
     *   set to legal values like 0, "" such that the Risk object
     * valid values at all time.
+    * @param title text for risk
     */
     public Risk(String title) {
-        // add functionality
+        if (title == null) {
+            this.title = "Unnamed constraint";
+            UID = "CO-" + riskCount;
+            riskCount++;
+        } else {
+            this.title = title;
+            UID = "CO-" + riskCount;
+            riskCount++;
+        }
     }
     
     /**
@@ -26,7 +45,7 @@ public class Risk {
     * @return risk UID
     */
     public String getUID() {
-        // add functionality
+        return UID;
     }
     
     /**
@@ -34,7 +53,7 @@ public class Risk {
     * @return title
     */
     public String getTitle() {
-        // add functionality
+        return title;
     }
     
     /**
@@ -42,8 +61,9 @@ public class Risk {
     * Example: <code>RI-01: Computer crash .</code>
     * @return formatted string
     */
+    @Override
     public String toString() {
-        // add functionality
+        return UID + ": " + title;
     }
     
     /**
@@ -51,7 +71,7 @@ public class Risk {
     * @return int impact value
     */
     public int getImpact() {
-        // add functionality
+        return impact;
     }
     
     /**
@@ -59,7 +79,7 @@ public class Risk {
     * @return int likelihood value
     */
     public int getLikelihood() {
-        // add functionality
+        return likelihood;
     }
     
     /**
@@ -68,7 +88,7 @@ public class Risk {
     * @return int priority value
     */
     public int priority() {
-        // add functionality
+        return priority;
     }
     
     /**
@@ -76,7 +96,7 @@ public class Risk {
     * @return String text of mitigation description
     */
     public String getMitigation() {
-        // add functionality
+        return mitigation;
     }
     
     /**
@@ -85,7 +105,11 @@ public class Risk {
     * @param title text for title
     */
     public void setTitle(String title) {
-        // add functionality
+        if (this.title != null) {
+            title = this.title;
+        } else {
+            // title does not change
+        }
     }
     
     /**
@@ -95,7 +119,13 @@ public class Risk {
     * @param value new impact value 0-9 with 9 most severe
     */
     public void setImpact(int value) {
-        // add functionality
+        if (value <= 0) {
+            impact = 0;
+        } else if (value >= 9) {
+            impact = 9;
+        } else {
+            impact = value;
+        }
     }
     
     /**
@@ -105,7 +135,13 @@ public class Risk {
     * @param value new likelihood value 0-9 with 9 most severe
     */
     public void setLikelihood(int value) {
-        // add functionality
+        if (value <= 0) {
+            likelihood = 0;
+        } else if (value >= 9) {
+            likelihood = 9;
+        } else {
+            likelihood = value;
+        }
     }
     
     /**
@@ -115,7 +151,11 @@ public class Risk {
     * @param text new risk mitigation text
     */
     public void setMitigation(String text) {
-        // add functionality
+        if (text != null) {
+            mitigation = text;
+        } else {
+            // title does not change
+        }
     }
                 
 }

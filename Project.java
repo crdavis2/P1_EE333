@@ -11,31 +11,30 @@ import java.util.Collections;
 
 /**
  * Generic Project
- *
  * @author Collin Davis crdavis2@uab.edu
  */
 public class Project {
 
     // Instance Variables
-    public static final int MAX_CONSTRAINTS = 10;
-    public static final int MAX_GOALS = 10;
-    public static final int MAX_RISKS = 10;
-    public String title;
-    public Constraint[] constraints;
-    public Goal[] goals;
-    public Risk[] risks;
-    public int ConstraintCounter = 0;
-    public int GoalCounter = 0;
-    public int RiskCounter = 0;
-    public int numGoals = 0;
-    public int numConstraints = 0;
-    public int numRisks = 0;
+    public static final int MAX_CONSTRAINTS       = 10;
+    public static final int MAX_GOALS             = 10;
+    public static final int MAX_RISKS             = 10;
+    public String           title;
+    public Constraint[]     constraints;
+    public Goal[]           goals;
+    public Risk[]           risks;
+    public int              ConstraintCounter     =  0;
+    public int              GoalCounter           =  0;
+    public int              RiskCounter           =  0;
+    public int              numGoals              =  0;
+    public int              numConstraints        =  0;
+    public int              numRisks              =  0;
 
     /**
      * Constructor for objects of class Project with title
-     *
+
      * @param title text for title. If null, the project title will
-     *              be set to "Unnamed project"
+     *      be set to "Unnamed project"
      */
     public Project(String title) {
         if (title == null) {
@@ -63,13 +62,13 @@ public class Project {
 
     /**
      * Represent a text description of the project like {title} with {#constraints}
-     * constraints, {#goals}, and {#risks} risks.
-     *
+     *  constraints, {#goals}, and {#risks} risks.
      * @return string as described
      */
     @Override
     public String toString() {
-        return title + " " + numConstraints + " " + numGoals + " " + numRisks;
+        return title + " " + numConstraints + " Constraints " + numGoals +
+                " Goals " + numRisks + " Risks";
     }
 
     /**
@@ -77,9 +76,8 @@ public class Project {
      * first goal. The method <code>reset()</code> will reset the object such that
      * it will return the first goal on the next invocation of
      * <code>getNextGoal()</code> after the <code>reset()</code>.
-     * <p>
-     * The order of the goals will be the ordered they were added to the object.
      *
+     * The order of the goals will be the ordered they were added to the object.
      * @return goal object if one exists or null otherwise
      */
     public Goal getNextGoal() {
@@ -92,13 +90,12 @@ public class Project {
     }
 
     /**
-     * Get the next constraint if it exists. The first time called, it will return
-     * the first constraint. The method <code>reset()</code> will reset the object
-     * such that it will return the first constraint on the next invocation of
-     * <code>getNextConstraint()</code> after the <code>reset()</code>.
-     *
-     * @return constraint object if one exists or null otherwise
-     */
+    * Get the next constraint if it exists. The first time called, it will return
+    * the first constraint. The method <code>reset()</code> will reset the object
+    * such that it will return the first constraint on the next invocation of
+    * <code>getNextConstraint()</code> after the <code>reset()</code>.
+    * @return constraint object if one exists or null otherwise
+    */
     public Constraint getNextConstraint() {
         if (ConstraintCounter < MAX_CONSTRAINTS) {
             ConstraintCounter++;
@@ -113,7 +110,6 @@ public class Project {
      * will return the highest priority risk. The method <code>reset()</code> will
      * reset the object such that it will return the first risk on the next
      * invocation of <code>getNextRisk()</code> after the <code>reset()</code>.
-     *
      * @return risk object if one exists or null otherwise
      */
     public Risk getNextRisk() {
@@ -172,11 +168,11 @@ public class Project {
 
     /**
      * Reset the getNextGoal, getNextConstraint, getNextRisk behaviors to start
-     * again at the "first" item to allow sequencing through the list again
+     *      again at the "first" item to allow sequencing through the list again
      */
     public void reset() {
-        GoalCounter = 0;
-        RiskCounter = 0;
+        GoalCounter       = 0;
+        RiskCounter       = 0;
         ConstraintCounter = 0;
     }
 

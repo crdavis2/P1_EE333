@@ -11,11 +11,20 @@
  */
 public class Project {
     
-    // instance variables
-    public static final int MAX_RISKS = 10;
-    public static final int MAX_GOALS = 10;
-    public static final int MAX_CONSTRAINTS = 10;
-    public String name;    
+    // Instance Variables
+    public static final int MAX_CONSTRAINTS       = 10;
+    public static final int MAX_GOALS             = 10;
+    public static final int MAX_RISKS             = 10;
+    public String           name;
+    public Constraint[]     constraints;
+    public Goal[]           goals;
+    public Risk[]           risks;
+    public int              ConstraintCounter     =  0;
+    public int              GoalCounter           =  0;
+    public int              RiskCounter           =  0;
+    public int              numGoals              =  0;
+    public int              numConstraints        =  0;
+    public int              numRisks              =  0;
     
     /**
      * Constructor for objects of class Project with name
@@ -24,7 +33,18 @@ public class Project {
      *      be set to "Unnamed project"
      */
     public Project(String name) {
-        this.name = name;
+        if (name == null) {
+            this.name = "Unnamed project";
+            constraints = new Constraint[MAX_CONSTRAINTS];
+            goals = new Goal[MAX_GOALS];
+            risks = new Risk[MAX_RISKS];
+        } else {
+            this.name = name;
+            constraints = new Constraint[MAX_CONSTRAINTS];
+            goals = new Goal[MAX_GOALS];
+            risks = new Risk[MAX_RISKS];
+        }
+        
     }
     
     /**
@@ -46,7 +66,12 @@ public class Project {
      * @return goal object if one exists or null otherwise
      */
     public Goal getNextGoal() {
-        // add functionality
+        if (GoalCounter < MAX_GOALS) {
+            GoalCounter++;
+            return goals[GoalCounter];
+        } else {
+            return null;
+        }
     }
     
     /**
@@ -57,7 +82,12 @@ public class Project {
     * @return constraint object if one exists or null otherwise
     */
     public Constraint getNextConstraint() {
-        // add functionality
+        if (ConstraintCounter < MAX_CONSTRAINTS) {
+            ConstraintCounter++;
+            return constraints[ConstraintCounter];
+        } else {
+            return null;
+        }
     }
     
     /**
@@ -68,16 +98,26 @@ public class Project {
      * @return risk object if one exists or null otherwise
      */
     public Risk getNextRisk() {
-        // add functionality
+        if (RiskCounter < MAX_RISKS) {
+            RiskCounter++;
+            return risks[RiskCounter];
+        } else {
+            return null;
+        }
     }
     
     /**
      * Add constraint to the project
      * 
-     * @constraint the constraint to add to the project
+     * @param constraint the constraint to add to the project
      */
-    public String addConstraint() {
-        // add functionality
+    public void addConstraint(Constraint constraint) {
+        if (numConstraints < MAX_CONSTRAINTS) {
+            constraints[numConstraints] = constraint;
+            numConstraints++;
+        } else {
+            // some error handling goes here
+        }
     }
     
     /**
@@ -85,8 +125,13 @@ public class Project {
      * 
      * @param goal the goal to add to the project
      */
-    public String addGoal() {
-        // add functionality
+    public void addGoal(Goal goal) {
+        if (numGoals < MAX_GOALS) {
+            goals[numGoals] = goal;
+            numGoals++;
+        } else {
+            // some error handling goes here
+        }
     }
     
     /**
@@ -94,16 +139,23 @@ public class Project {
      * 
      * @param risk the risk to add to the project
      */
-    public String addRisk() {
-        // add functionality
+    public void addRisk(Risk risk) {
+        if (numRisks < MAX_RISKS) {
+            risks[numRisks] = risk;
+            numRisks++;
+        } else {
+            // some error handling goes here
+        }
     }
     
     /**
      * Reset the getNextGoal, getNextConstraint, getNextRisk behaviors to start
      *      again at the "first" item to allow sequencing through the list again
      */
-    public String reset() {
-        // add functionality
+    public void reset() {
+        GoalCounter       = 0;
+        RiskCounter       = 0;
+        ConstraintCounter = 0;
     }
     
 }

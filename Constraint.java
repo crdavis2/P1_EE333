@@ -72,6 +72,10 @@ public class Constraint {
      * @param title text for title
      */
     public void setTitle(String title) {
-        // add functionality
+        if (this.title != null) {
+            title = this.title;
+        } else {
+            // title does not change
+        }
     }
 }

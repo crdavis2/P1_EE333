@@ -31,11 +31,11 @@ public class Risk {
     public Risk(String title) {
         if (title == null) {
             this.title = "Unnamed constraint";
-            UID = "CO-" + riskCount;
+            UID = "RI-" + riskCount;
             riskCount++;
         } else {
             this.title = title;
-            UID = "CO-" + riskCount;
+            UID = "RI-" + riskCount;
             riskCount++;
         }
     }

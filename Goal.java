@@ -11,7 +11,7 @@
  */
 public class Goal {
     
-    //Instance Variables
+    // Instance Variables
     public String     title;
     public String     UID;
     public static int goalCount = 0;
@@ -71,6 +71,10 @@ public class Goal {
      * @param title text for title
      */
     public void setTitle(String title) {
-        // add functionality
+        if (this.title != null) {
+            title = this.title;
+        } else {
+            // title does not change
+        }
     }
 }

@@ -28,11 +28,11 @@ public class Goal {
     public Goal(String title) {
         if (title == null) {
             this.title = "Unnamed cosntraint";
-            UID = "CO-" + goalCount;
+            UID = "GO-" + goalCount;
             goalCount++;
         } else {
             this.title = title;
-            UID = "CO-" + goalCount;
+            UID = "GO-" + goalCount;
             goalCount++;
         }
     }

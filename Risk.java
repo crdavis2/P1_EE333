@@ -83,11 +83,12 @@ public class Risk {
     }
     
     /**
-    * Get priority of risk (product of severity and likelihood) where larger is 
+    * Get priority of risk (product of impact and likelihood) where larger is 
     *   higher priority
     * @return int priority value
     */
     public int priority() {
+        priority = impact * likelihood;
         return priority;
     }
     

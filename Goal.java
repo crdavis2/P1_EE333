@@ -12,9 +12,9 @@
 public class Goal {
     
     // Instance Variables
-    public String     title;
-    public String     UID;
-    public static int goalCount = 0;
+    private String     title;
+    private String     UID;
+    private static int goalCount = 0;
     
     
     

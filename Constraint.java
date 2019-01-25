@@ -12,9 +12,9 @@
 public class Constraint {
     
     // Instance Variables
-    public String     title;
-    public String     UID;
-    public static int constraintCount = 0;
+    private String     title;
+    private String     UID;
+    private static int constraintCount = 0;
    
     
     /**

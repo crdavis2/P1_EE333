@@ -12,13 +12,13 @@
 public class Risk {
     
     // Instance Variables
-    public String     title;
-    public String     UID;
-    public String     mitigation;
-    public static int riskCount = 0;
-    public int        impact;
-    public int        likelihood;
-    public int        priority;
+    private String     title;
+    private String     UID;
+    private String     mitigation;
+    private static int riskCount = 0;
+    private int        impact;
+    private int        likelihood;
+    private int        priority;
     
     
     /**

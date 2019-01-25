@@ -1,7 +1,3 @@
-
-import java.util.Arrays;
-import java.util.Collections;
-
 /*
  * File: Project.java
  * Author: Collin Davis crdavis2@uab.edu
@@ -16,19 +12,19 @@ import java.util.Collections;
 public class Project {
 
     // Instance Variables
-    public static final int MAX_CONSTRAINTS       = 10;
-    public static final int MAX_GOALS             = 10;
-    public static final int MAX_RISKS             = 10;
-    public String           title;
-    public Constraint[]     constraints;
-    public Goal[]           goals;
-    public Risk[]           risks;
-    public int              ConstraintCounter     =  0;
-    public int              GoalCounter           =  0;
-    public int              RiskCounter           =  0;
-    public int              numGoals              =  0;
-    public int              numConstraints        =  0;
-    public int              numRisks              =  0;
+    private static final int MAX_CONSTRAINTS       = 10;
+    private static final int MAX_GOALS             = 10;
+    private static final int MAX_RISKS             = 10;
+    private String           title;
+    private Constraint[]     constraints;
+    private Goal[]           goals;
+    private Risk[]           risks;
+    private int              ConstraintCounter     =  0;
+    private int              GoalCounter           =  0;
+    private int              RiskCounter           =  0;
+    private int              numGoals              =  0;
+    private int              numConstraints        =  0;
+    private int              numRisks              =  0;
 
     /**
      * Constructor for objects of class Project with title
@@ -176,7 +172,14 @@ public class Project {
         ConstraintCounter = 0;
     }
 
-    void merge(Risk[] arr, int l, int m, int r) {
+    /**
+     * Take collection of risks and sort from max to min
+     * @param arr array of risks collected
+     * @param l
+     * @param m
+     * @param r 
+     */
+     private void merge(Risk[] arr, int l, int m, int r) {
         int n1 = m - l + 1;
         int n2 = r - m;
         Risk[] L = new Risk[n1];
@@ -215,7 +218,13 @@ public class Project {
         }
     }
 
-    void sort(Risk[] arr, int l, int r) {
+     /**
+      * Take collection of risks and sort from max to min
+      * @param arr
+      * @param l
+      * @param r 
+      */
+    private void sort(Risk[] arr, int l, int r) {
         if (l < r) {
             int m = (l + r) / 2;
 

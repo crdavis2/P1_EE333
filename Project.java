@@ -57,14 +57,14 @@ public class Project {
     }
 
     /**
-     * Represent a text description of the project like {title} with {#constraints}
+     * Represent a text description of the project like: {title} with {#constraints}
      *  constraints, {#goals}, and {#risks} risks.
      * @return string as described
      */
     @Override
     public String toString() {
-        return title + " " + numConstraints + " Constraints " + numGoals +
-                " Goals " + numRisks + " Risks";
+        return title + " with " + numConstraints + " constraints, " + numGoals +
+                " goals, and " + numRisks + " risks.";
     }
 
     /**

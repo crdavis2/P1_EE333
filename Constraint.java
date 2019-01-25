@@ -7,7 +7,7 @@
 
 /**
  * Generic Constraint
- * @author Collin Davis
+ * @author Collin Davis crdavis2@uab.edu
  */
 public class Constraint {
     
@@ -19,8 +19,9 @@ public class Constraint {
     
     /**
     * Create a constraint with a UID and a name. If name is null,
-    *       then "Unnamed constraint" shall be used for the
-    *       name of the constraint.
+    * then "Unnamed constraint" shall be used for the
+    * name of the constraint.
+    * 
     * @param title text for title.
     */
     public Constraint(String title) {
@@ -67,7 +68,7 @@ public class Constraint {
     
     /**
      * Set (change) the title of a constraint. If the new title is null,
-     *      the title will NOT change.
+     * the title will NOT change.
      * 
      * @param title text for title
      */

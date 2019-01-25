@@ -7,7 +7,7 @@
 
 /**
  * Generic Goal
- * @author Collin Davis
+ * @author Collin Davis crdavis2@uab.edu
  */
 public class Goal {
     
@@ -21,7 +21,7 @@ public class Goal {
     
     /**
      * Create a goal with a UID and a title. If the title is null, then "Unnamed
-     *      goal" shall be used for the title of the goal.
+     * goal" shall be used for the title of the goal.
      * 
      * @param title text for goal
      */
@@ -40,6 +40,7 @@ public class Goal {
     
     /**
     * Get the UID for the sensor CO-{number}
+    * 
     * @return goal UID
     */
     public String getUID() {
@@ -48,6 +49,7 @@ public class Goal {
     
     /**
     * Get title of the goal
+    * 
     * @return text title
     */
     public String getTitle() {
@@ -57,6 +59,7 @@ public class Goal {
     /**
     * Return the string “{UID}: {title}”
     * Example: <code>GO-01: System shall be easy to implement.</code>
+    * 
     * @return formatted string
     */
     @Override
@@ -66,7 +69,7 @@ public class Goal {
     
     /**
      * Set (change) the title of a goal. If the new title is null,
-     *      the title will NOT change.
+     * the title will NOT change.
      * 
      * @param title text for title
      */

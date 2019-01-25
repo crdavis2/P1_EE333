@@ -12,9 +12,9 @@
 public class Constraint {
     
     // Instance Variables
-    private String     title;
-    private String     UID;
-    private static int constraintCount = 0;
+    private String     title;               // title of Constraint
+    private String     UID;                 // Unique ID for each Constraint
+    private static int constraintCount = 1; // used to generate UID
    
     
     /**

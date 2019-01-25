@@ -12,9 +12,9 @@
 public class Goal {
     
     // Instance Variables
-    private String     title;
-    private String     UID;
-    private static int goalCount = 0;
+    private String     title;           // title of Goal
+    private String     UID;             // Unique ID for each Goal
+    private static int goalCount = 1;   // used to generate UID
     
     
     

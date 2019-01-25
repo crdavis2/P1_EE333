@@ -27,6 +27,8 @@ public class TestP1 {
         
         Project    p1 = new Project("p1");
         
+        println("Name:      Collin Davis");
+        println("BlazerID:  crdavis2");
         println("g1 then c1 then r1 then p1 without anything more than constructor");
         println(g1);
         println(c1);

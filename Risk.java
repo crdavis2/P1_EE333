@@ -12,13 +12,13 @@
 public class Risk {
     
     // Instance Variables
-    private String     title;
-    private String     UID;
-    private String     mitigation;
-    private static int riskCount = 0;
-    private int        impact;
-    private int        likelihood;
-    private int        priority;
+    private String     title;           // title of Risk
+    private String     UID;             // Unique ID for each Risk
+    private String     mitigation;      // action to reduce Risk
+    private static int riskCount = 1;   // used to generate UID
+    private int        impact;          // measure of severity of Risk
+    private int        likelihood;      // measure of certainty that a Risk will happen
+    private int        priority;        // product of impact and likelihood
     
     
     /**

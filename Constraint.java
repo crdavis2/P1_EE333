@@ -26,7 +26,7 @@ public class Constraint {
     */
     public Constraint(String title) {
         if (title == null) {
-            this.title = "Unnamed cosntraint";
+            this.title = "Unnamed constraint";
             UID = "CO-" + constraintCount;
             constraintCount++;
         } else {

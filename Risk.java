@@ -31,7 +31,7 @@ public class Risk {
     */
     public Risk(String title) {
         if (title == null) {
-            this.title = "Unnamed constraint";
+            this.title = "Unnamed risk";
             UID = "RI-" + riskCount;
             riskCount++;
         } else {

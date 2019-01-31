@@ -27,7 +27,7 @@ public class Goal {
      */
     public Goal(String title) {
         if (title == null) {
-            this.title = "Unnamed cosntraint";
+            this.title = "Unnamed goal";
             UID = "GO-" + goalCount;
             goalCount++;
         } else {
